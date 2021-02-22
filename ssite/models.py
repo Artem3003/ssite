@@ -38,7 +38,6 @@ class Genre(models.Model):
 class Album(models.Model):
     title = models.CharField(max_length=50, unique = True)
     author = models.ManyToManyField("Singer")
-    tracks = models.ManyToManyField("Track")
 
     def __str__(self):
         return f'{self.title}'
@@ -48,6 +47,7 @@ class Track(models.Model):
     author = models.ManyToManyField("Singer")
     duration = models.DurationField()
     genre = models.ManyToManyField('Genre')
-
+    albumed = models.ForeignKey('Album', on_delete = models.CASCADE, blank = True)
+    released = models.DateTimeField()
     def __str__(self):
         return f'{self.title}'

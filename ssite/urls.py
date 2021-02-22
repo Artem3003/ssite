@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import Blog
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('blog/', Blog.as_view())
 ]
